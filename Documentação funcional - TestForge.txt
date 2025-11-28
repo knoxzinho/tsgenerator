@@ -1,0 +1,70 @@
+1. Introdução
+1.1 Objetivo
+O TestForge é uma ferramenta automatizada para extração inteligente de requisitos e geração massiva de cenários de teste baseados em IA.
+Ele transforma documentos de requisitos funcionais em
+·	análises de risco
+·	estimativas de bugs
+·	cenários funcionais, negativos, borda, estresse, segurança…
+·	um Excel final consolidado, pronto para QA
+1.2 Problema Resolvido
+Equipes de QA gastam horasdias convertendo documentação para cenários.
+ O TestForge reduz isso para segundos, com qualidade consistente.
+
+2. Funcionalidades Principais
+2.1 Leitura Inteligente de Documentos (.docx)
+Baseado no arquivo extractor.py 
+·	lê seções por título
+·	agrupa requisitos
+·	identifica requisitos explícitos e implícitos
+·	prepara estrutura uniforme para IA
+2.2 Geração de Prompt Especializado
+O TestForge cria um prompt avançado contendo
+·	seção por seção
+·	requisitos saneados
+·	instruções para IA gerar JSON com 13 categorias
+Baseado em build_prompt do generator.py
+
+2.3 Sanitização e Validação de JSON
+O TestForge extrai JSON mesmo quando
+·	o modelo manda texto extra
+·	há tokens fora do padrão
+·	há erros de formatação
+2.4 Geração Automática de Excel
+Uma única aba com
+·	ID
+·	título
+·	descrição
+·	pré-condições
+·	passos
+·	resultado esperado
+·	tipo de cenário
+Tudo organizado, com formatação profissional.
+2.5 Multi-documento
+Todos os arquivos da pasta Documentações são processados simultaneamente, cada um gerando sua própria aba.
+3. Fluxo Geral do Sistema
+1.	Usuário coloca .docx na pasta
+2.	TestForge escaneia documentos
+3.	Extrai requisitos
+4.	Gera prompt
+5.	Envia para IA
+6.	Sanitiza JSON
+7.	Escreve Excel
+8.	Gera relatório final (Resumo)
+
+4. Arquitetura do Sistema
+Camadas
+·	Entrada (arquivos .docx)
+·	Extração (extractor.py)
+·	Processamento AI (generator.py)
+·	Sanitização (json_sanitizer)
+·	Output (Excel)
+
+5. Requisitos Técnicos
+Linguagem
+Python 3.10+
+Bibliotecas
+·	python-docx
+·	openpyxl
+·	google-genai
+·	json
+·	re, os, sys
